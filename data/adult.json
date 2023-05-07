@@ -1,0 +1,190 @@
+[
+	{
+		"name": "age",
+		"type": "finite/ordered",
+		"representation": 90
+	},
+	{
+		"name": "workclass",
+		"type": "finite",
+		"representation": [
+			"?",
+			"Private",
+            "Local-gov",
+            "Self-emp-not-inc",
+            "Federal-gov",
+            "Self-emp-inc",
+            "State-gov",
+            "Without-pay",
+            "Never-worked"
+		]
+	},
+	{
+		"name": "fnlwgt",
+		"type": "finite/ordered",
+        "representation": 1484705
+	},
+	{
+		"name": "education",
+		"type": "finite",
+		"representation": [
+			"Some-college",
+			"Prof-school",
+			"HS-grad",
+            "Bachelors",
+            "Assoc-acdm",
+            "Doctorate",
+            "11th",
+            "7th-8th",
+            "Assoc-voc",
+            "Masters",
+            "10th",
+            "9th",
+            "12th",
+            "5th-6th",
+            "1st-4th",
+            "Preschool"
+		]
+	},
+	{
+		"name": "education-num",
+		"type": "finite/ordered",
+		"representation": 16
+	},
+	{
+		"name": "marital-status",
+		"type": "finite",
+		"representation": [
+			"Divorced",
+            "Never-married",
+            "Married-civ-spouse",
+            "Separated",
+            "Married-spouse-absent",
+            "Widowed",
+            "Married-AF-spouse"
+		]
+	},
+	{
+		"name": "occupation",
+		"type": "finite",
+		"representation": [
+			"Adm-clerical",
+			"Prof-specialty",
+			"Sales",
+			"Transport-moving",
+			"Other-service",
+            "Exec-managerial",
+            "?",
+			"Protective-serv",
+			"Craft-repair",
+			"Machine-op-inspct",
+			"Farming-fishing",
+            "Handlers-cleaners",
+            "Tech-support",
+            "Priv-house-serv",
+            "Armed-Forces"
+		]
+	},
+	{
+		"name": "relationship",
+		"type": "finite",
+		"representation": [
+			"Unmarried",
+			"Not-in-family",
+            "Husband",
+            "Own-child",
+            "Other-relative",
+            "Wife"
+		]
+	},
+	{
+		"name": "race",
+		"type": "finite",
+		"representation": [
+			"White",
+			"Amer-Indian-Eskimo",
+			"Black",
+            "Asian-Pac-Islander",
+            "Other"
+		]
+	},
+	{
+		"name": "sex",
+		"type": "finite",
+		"representation": [
+			"Female",
+			"Male"
+		]
+	},
+	{
+		"name": "capital-gain",
+		"type": "finite/ordered",
+		"representation": 99999
+	},
+	{
+		"name": "capital-loss",
+		"type": "finite/ordered",
+		"representation": 4356
+	},
+	{
+		"name": "hours-per-week",
+		"type": "finite/ordered",
+		"representation": 99
+	},
+	{
+		"name": "native-country",
+		"type": "finite",
+		"representation": [
+			"?",
+			"Cambodia",
+			"Canada",
+			"China",
+			"Colombia",
+			"Cuba",
+			"Dominican-Republic",
+			"Ecuador",
+			"El-Salvador",
+			"England",
+            "France",
+			"Germany",
+			"Greece",
+            "Guatemala",
+			"Haiti",
+			"Holand-Netherlands",
+            "Honduras",
+			"Hong",
+			"Hungary",
+            "India",
+			"Iran",
+			"Ireland",
+            "Italy",
+			"Jamaica",
+			"Japan",
+            "Laos",
+			"Mexico",
+			"Nicaragua",
+            "Outlying-US(Guam-USVI-etc)",
+			"Peru",
+			"Philippines",
+            "Poland",
+			"Portugal",
+			"Puerto-Rico",
+            "Scotland",
+			"South",
+			"Taiwan",
+            "Thailand",
+			"Trinadad&Tobago",
+			"United-States",
+            "Vietnam",
+            "Yugoslavia"
+		]
+	},
+	{
+		"name": "label",
+		"type": "finite",
+		"representation": [
+			"<=50K",
+			">50K"
+		]
+	}
+]
