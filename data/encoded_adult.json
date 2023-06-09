@@ -1,0 +1,190 @@
+[
+	{
+		"name": "age",
+		"type": "finite/ordered",
+		"representation": 90
+	},
+	{
+		"name": "workclass",
+		"type": "finite",
+		"representation": [
+			0,
+			1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+		]
+	},
+	{
+		"name": "fnlwgt",
+		"type": "finite/ordered",
+        "representation": 1484705
+	},
+	{
+		"name": "education",
+		"type": "finite",
+		"representation": [
+			0,
+			1,
+			2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+		]
+	},
+	{
+		"name": "education-num",
+		"type": "finite/ordered",
+		"representation": 16
+	},
+	{
+		"name": "marital-status",
+		"type": "finite",
+		"representation": [
+			0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+		]
+	},
+	{
+		"name": "occupation",
+		"type": "finite",
+		"representation": [
+			0,
+			1,
+			2,
+			3,
+			4,
+            5,
+            6,
+			7,
+			8,
+			9,
+			10,
+            11,
+            12,
+            13,
+            14
+		]
+	},
+	{
+		"name": "relationship",
+		"type": "finite",
+		"representation": [
+			0,
+			1,
+            2,
+            3,
+            4,
+            5
+		]
+	},
+	{
+		"name": "race",
+		"type": "finite",
+		"representation": [
+			0,
+			1,
+			2,
+            3,
+            4
+		]
+	},
+	{
+		"name": "sex",
+		"type": "finite",
+		"representation": [
+			0,
+			1
+		]
+	},
+	{
+		"name": "capital-gain",
+		"type": "finite/ordered",
+		"representation": 99999
+	},
+	{
+		"name": "capital-loss",
+		"type": "finite/ordered",
+		"representation": 4356
+	},
+	{
+		"name": "hours-per-week",
+		"type": "finite/ordered",
+		"representation": 99
+	},
+	{
+		"name": "native-country",
+		"type": "finite",
+		"representation": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+            10,
+			11,
+			12,
+            13,
+			14,
+			15,
+            16,
+			17,
+			18,
+            19,
+			20,
+			21,
+            22,
+			23,
+			24,
+            25,
+			26,
+			27,
+            28,
+			29,
+			30,
+            31,
+			32,
+			33,
+            34,
+			35,
+			36,
+            37,
+			38,
+			39,
+            40,
+            41
+		]
+	},
+	{
+		"name": "label",
+		"type": "finite",
+		"representation": [
+			0,
+			1
+		]
+	}
+]

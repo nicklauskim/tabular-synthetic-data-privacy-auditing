@@ -1,0 +1,16 @@
+{
+    "age": 90, 
+    "workclass": 9, 
+    "fnlwgt": 1484705, 
+    "education": 16, 
+    "marital-status": 7, 
+    "occupation": 15, 
+    "relationship": 6, 
+    "race": 5, 
+    "sex": 2, 
+    "capital-gain": 99999, 
+    "capital-loss": 4356, 
+    "hours-per-week": 99, 
+    "native-country": 42, 
+    "label": 2
+}
