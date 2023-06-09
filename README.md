@@ -2,7 +2,7 @@
 
 # Adversarial Privacy Auditing of Tabular Synthetic Data Generators (Using TAPAS Framework)
 
-Evaluating the privacy of synthetic data with an adversarial toolbox. This code utilizes the TAPAS toolbox presented in [the associated paper](https://arxiv.org/abs/2211.06550).
+Evaluating the privacy of synthetic data with an adversarial toolbox. This code utilizes the TAPAS toolbox presented in [the associated paper](https://arxiv.org/abs/2211.06550). The details below on installation, etc. are taken directly from their repository (https://github.com/alan-turing-institute/privacy-sdg-toolbox).
 
 [Documentation.](https://privacy-sdg-toolbox.readthedocs.io/en/latest/index.html#)
 
