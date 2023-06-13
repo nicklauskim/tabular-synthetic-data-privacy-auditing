@@ -9,7 +9,7 @@ Evaluating the privacy of synthetic data with an adversarial toolbox. This code 
 
 ## Quickstart
 
-For a quick, over-arching view of the workflow for running a privacy audit on a synthetic data generator, take a look at the main file [here](https://github.com/nicklauskim/Tabular-Synthetic-Data-Privacy-Auditing/blob/main/src/groundhog_audit.py).
+**For a quick, over-arching view of the workflow for running a privacy audit on a synthetic data generator, take a look at the main file [here](https://github.com/nicklauskim/Tabular-Synthetic-Data-Privacy-Auditing/blob/main/src/groundhog_audit.py).**
 
 ## Reference
 
