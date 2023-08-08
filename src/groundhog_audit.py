@@ -37,36 +37,33 @@ from modules.myctgan import PATEGAN
 # Load data
 ################################################################################################
 
-df = pd.read_csv("data/texas-big.csv", index_col=None)[:1000]
-df = pd.read_csv("data/texas-orig.csv", index_col=0)
+# Read in csv data file
+df = pd.read_csv("../data/texas-big.csv", index_col=None)[:1000]
 cols = df.columns
 dtype_dict = {"DISCHARGE": "str", **{col: 'str' for col in cols[1:12]}, **{col: 'float64' for col in cols[12:]}}
 df = df.astype(dtype_dict)
 
-data = tapas.datasets.TabularDataset(data=df, description=tapas.datasets.DataDescription(json.load(open("data/texas-big.json"))))
-
-# Load encoded data
-encoded_data = tapas.datasets.TabularDataset(data=pd.read_csv("data/encoded_texas.csv"),
-                                        description=tapas.datasets.data_description.DataDescription(json.load(open("data/encoded_texas.json"))),)
-
-# Get domain of dataset (needed for AIM)
-domain = json.load(open("data/texas_domain.json"))
-domain = Domain(list(domain.keys()), list(domain.values()))
-print(domain)
+# Create TabularDataset object
+data = tapas.datasets.TabularDataset(data=df, 
+                                     description=tapas.datasets.DataDescription(json.load(open("../data/texas-big.json"))))
 
 
 ################################################################################################
-# Attack/audit
+# Perform attack/audit
 ################################################################################################
+
+# Choose number of records to target (for each, random and outlier)
+num_targets = 5
 
 # Select random target record indices
-random_index = list(np.random.randint(0, 1000, 50))
+random_index = list(np.random.randint(0, 1000, num_targets))
 
 # Select outlier target record indices
 model_isoforest = IsolationForest()
 preds = model_isoforest.fit_predict(data.data.iloc[:, 7:])
-outlier_index = list(np.random.choice(np.where(preds == -1)[0], 50))
+outlier_index = list(np.random.choice(np.where(preds == -1)[0], num_targets))
 
+# List of all our target indices
 targets = random_index + outlier_index
 
 
@@ -119,6 +116,7 @@ generators = [Raw(),
               DPCTGAN(epsilon=1, batch_size=64, epochs=30),
               DPCTGAN(epsilon=3, batch_size=64, epochs=30)]
 
+# To store results of attacks
 all_metrics = pd.DataFrame()
 all_summaries = []    # for effective epsilon calculation
 
@@ -127,7 +125,7 @@ for gen in generators:
     # Loop through all target records
     for target in targets:
         try:  
-            summ, metr = attack(dataset=data, target_record=target, generator=gen)
+            summ, metr = attack(dataset=data, target_index=target, generator=gen)
             all_summaries.append(summ)
             all_metrics = pd.concat([all_metrics, metr], axis=0, ignore_index=True)
             # print(metr.head())
@@ -140,27 +138,28 @@ print(all_summaries)
 
 
 ################################################################################################
-# Create plots
+# Obtain results and plots
 ################################################################################################
 
 # Get indices for only the attacks on random targets
 num_attacks = all_metrics.shape[0]
-random_indices = [num for i in range(0, num_attacks, 10) for num in range(i, i+5)]
+random_indices = [num for i in range(0, num_attacks, num_targets*2) for num in range(i, i+num_targets)]
 
 # Compare generators on random targets
 report = tapas.report.BinaryLabelAttackReport(all_metrics.iloc[random_indices])
 report.metrics = ["privacy_gain", "auc", "effective_epsilon"]
-report.compare(comparison_column='generator', fixed_pair_columns=['attack', 'dataset'], marker_column='target_id', filepath="figures/compare_generators")
+report.compare(comparison_column='generator', fixed_pair_columns=['attack', 'dataset'], marker_column='target_id', filepath="../figures/Texas_compare_generators")
 
-# Save eff eps report
-tapas.report.EffectiveEpsilonReport(selected_summaries).publish("figures/CTGAN_Texas_report")
+# Save eff eps report for random targets
+selected_summaries = all_summaries.iloc[random_indices]
+tapas.report.EffectiveEpsilonReport(selected_summaries).publish("../figures/Texas_report")
 
 
 # Compare attack for different target record types: random and outlier
-all_metrics['target_type'] = (['Random']*5 + ['Outlier']*5) * len(generators)
+all_metrics['target_type'] = (['Random']*num_targets + ['Outlier']*num_targets) * len(generators)
 
 report = tapas.report.BinaryLabelAttackReport(all_metrics)
 report.metrics = ["privacy_gain", "auc"]
-report.compare(comparison_column='generator', fixed_pair_columns=['attack', 'dataset'], marker_column='target_type', filepath="figures/random_versus_outlier")
+report.compare(comparison_column='generator', fixed_pair_columns=['attack', 'dataset'], marker_column='target_type', filepath="../figures/Texas_random_versus_outlier")
 
 
